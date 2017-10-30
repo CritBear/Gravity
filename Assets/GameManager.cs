@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -10,34 +11,39 @@ public class GameManager : MonoBehaviour {
     public Transform m_SpawnPoint;
     public Text m_MessageText;
     public float m_StartDelay = 3f;
-
+    public float m_EndDelay = 2f;
+    
     private WaitForSeconds m_StartWait;
+    private WaitForSeconds m_EndWait;
 
     private void Start()
     {
         m_StartWait = new WaitForSeconds(m_StartDelay);
+        m_EndWait = new WaitForSeconds(m_EndDelay);
 
-        StartCoroutine(GameStarting());
+        StartCoroutine(StageStarting());
     }
 
-    public void Clear()
-    {
-        Debug.Log("Goal");
-    }
-
-    IEnumerator GameStarting()
+    IEnumerator StageStarting()
     {
         yield return m_StartWait;
 
         SetPlayer();
         m_MessageText.text = string.Empty;
-        StartCoroutine(GameLoop());
     }
 
-    IEnumerator GameLoop()
+    public void Clear()
     {
-        Debug.Log("Loop");
-        yield return null;
+        PlayInfo.stageNum++;
+        StartCoroutine(StageEnding());
+    }
+
+    IEnumerator StageEnding()
+    {
+        m_MessageText.text = "Clear";
+        yield return m_EndWait;
+
+        SceneManager.LoadScene("Stage" + PlayInfo.stageNum.ToString());
     }
 
     void SetPlayer()

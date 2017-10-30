@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\PlayerHealth.cs" />
+    <Compile Include="Assets\PlayInfo.cs" />
     <Compile Include="Assets\PlayManager.cs" />
     <Compile Include="Assets\SkyBoxes\MouseLook.cs" />
     <Compile Include="Assets\SkyBoxes\RecordScreens.cs" />

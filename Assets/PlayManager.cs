@@ -11,6 +11,7 @@ public class PlayManager : MonoBehaviour {
     private float m_CurrentHealth;
     private bool m_Dead;
 
+
     private void OnEnable()
     {
         m_GameManager = GameObject.Find("GameManager");
@@ -24,5 +25,6 @@ public class PlayManager : MonoBehaviour {
         {
             m_GameManager.SendMessage("Clear", SendMessageOptions.DontRequireReceiver);
         }
+        
     }
 }

@@ -439,14 +439,14 @@ MonoBehaviour:
     width: 804
     height: 484
   m_SceneLighting: 1
-  lastFramingTime: 3668.633032586246
+  lastFramingTime: 2054.522746056102
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -10.341559, y: 4.481087, z: 47.94233}
+    m_Target: {x: 434.21606, y: 291.04254, z: 24.678772}
     speed: 2
-    m_Value: {x: -10.341559, y: 4.481087, z: 47.94233}
+    m_Value: {x: 434.21606, y: 291.04254, z: 24.678772}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -469,13 +469,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.09080344, y: 0.08209897, z: -0.007511135, w: -0.99245054}
+    m_Target: {x: 0.00025963504, y: -0.04794609, z: -0.00001202366, w: -0.99884987}
     speed: 2
-    m_Value: {x: -0.09080343, y: 0.08209897, z: -0.007511135, w: -0.99245054}
+    m_Value: {x: 0.00025963507, y: -0.047946095, z: -0.000012023661, w: -0.9988499}
   m_Size:
-    m_Target: 0.9098155
+    m_Target: 393.5484
     speed: 2
-    m_Value: 0.9098155
+    m_Value: 393.5484
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -548,28 +548,28 @@ MonoBehaviour:
     height: 572
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e2060000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 1afcffff00000000
+    m_ExpandedIDs: 0c7cfdffe47efdff4a5dffff16a1ffff08e2ffff1afcffff00000000ac3f0000ce3f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Canvas
+      m_OriginalName: Canvas
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 16334
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
   m_ExpandedScenes:
-  - stage_1
+  - Stage1
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -595,9 +595,9 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 979
+    x: 808
     y: 92
-    width: 383
+    width: 558
     height: 572
 --- !u!114 &20
 MonoBehaviour:
@@ -708,18 +708,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 0e2900002857000024410000d88700005a3c0000908b0000000000001c3000004c30000066280000f0290000883d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Stage2
+      m_OriginalName: Stage2
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 14122
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:

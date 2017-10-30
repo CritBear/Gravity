@@ -464,6 +464,11 @@ Prefab:
       propertyPath: m_MessageText
       value: 
       objectReference: {fileID: 18891680}
+    - target: {fileID: 114904281178438978, guid: 3265e47e8be5ed04a8f3dbf19ce6cee9,
+        type: 2}
+      propertyPath: m_EndDelay
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3265e47e8be5ed04a8f3dbf19ce6cee9, type: 2}
   m_IsPrefabParent: 0
