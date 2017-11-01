@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManager : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public GameObject m_SecondCam;
     public Transform m_SpawnPoint;
     public Text m_MessageText;
+
     public float m_StartDelay = 3f;
     public float m_EndDelay = 2f;
     
@@ -32,6 +34,11 @@ public class GameManager : MonoBehaviour {
         m_MessageText.text = string.Empty;
     }
 
+    public void StageReset()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     public void Clear()
     {
         PlayInfo.stageNum++;
@@ -44,6 +51,20 @@ public class GameManager : MonoBehaviour {
         yield return m_EndWait;
 
         SceneManager.LoadScene("Stage" + PlayInfo.stageNum.ToString());
+    }
+
+    public void Dead()
+    {
+        StartCoroutine(DeadEnding());
+    }
+    
+    IEnumerator DeadEnding()
+    {
+        m_MessageText.text = "You Died";
+        m_Player.GetComponent<FirstPersonController>().enabled = false;
+        yield return m_EndWait;
+       
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void SetPlayer()

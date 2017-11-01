@@ -7,6 +7,7 @@ public class UserControl : MonoBehaviour {
     public ParticleSystem helpEffect_90Prefab;
     public ParticleSystem helpEffect_180Prefab;
 
+    private GameObject m_GameManager;
     ParticleSystem helpEffect_90;
     ParticleSystem helpEffect_180;
     Renderer helpEffect_90Rend;
@@ -22,6 +23,7 @@ public class UserControl : MonoBehaviour {
 
     private void Start()
     {
+        m_GameManager = GameObject.Find("GameManager");
         world = GameObject.Find("World");
         helpEffect_90 = Instantiate(helpEffect_90Prefab);
         helpEffect_180 = Instantiate(helpEffect_180Prefab);
@@ -43,6 +45,7 @@ public class UserControl : MonoBehaviour {
             PlayHelpEffect();
         }
 
+        OnStageReset();
     }
 
     IEnumerator RotateWorld(Vector3 axis, float rotateAmount) //RotateAround를 Slerp형태로
@@ -86,7 +89,7 @@ public class UserControl : MonoBehaviour {
         if (Input.GetKeyDown("q"))
         {
             StartCoroutine(GravityZero());
-            StartCoroutine(RotateWorld(new Vector3(-1, 0, 0),180));
+            StartCoroutine(RotateWorld(new Vector3(0, 0, 1),180));
         }
     }
     
@@ -111,6 +114,14 @@ public class UserControl : MonoBehaviour {
             {
                 StartCoroutine(RotateWorld(new Vector3(1, 0, 0), 90));
             }
+        }
+    }
+
+    void OnStageReset()
+    {
+        if (Input.GetKeyDown("r"))
+        {
+            m_GameManager.SendMessage("StageReset", SendMessageOptions.DontRequireReceiver);
         }
     }
 

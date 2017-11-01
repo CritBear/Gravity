@@ -51,4 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9610add50055d614db0c0939a9f84121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  m_Player: {fileID: 0}
+  m_SecondCam: {fileID: 0}
+  m_SpawnPoint: {fileID: 0}
+  m_MessageText: {fileID: 0}
+  m_StartDelay: 3
+  m_EndDelay: 2
