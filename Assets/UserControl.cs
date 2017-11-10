@@ -20,6 +20,7 @@ public class UserControl : MonoBehaviour {
     float rotateTime = 0.5f;
     int isGravityZero;
     bool isRotateHelpOn = false;
+    bool isRotating = false;
 
     private void Start()
     {
@@ -36,8 +37,12 @@ public class UserControl : MonoBehaviour {
 
     private void Update()
     {
-        OnChangeGravityUp();
-        OnChangeGravityForward();
+        if (!isRotating)
+        {
+            OnChangeGravityUp();
+            OnChangeGravityForward();
+            OnChangeGravityBackward();
+        }
 
         OnRotateHelp();
         if (isRotateHelpOn)
@@ -50,6 +55,8 @@ public class UserControl : MonoBehaviour {
 
     IEnumerator RotateWorld(Vector3 axis, float rotateAmount) //RotateAround를 Slerp형태로
     {
+        isRotating = true;
+
         float step = 0.0f;
         float rate = 1.0f / rotateTime;
         float smoothStep = 0.0f;
@@ -65,6 +72,7 @@ public class UserControl : MonoBehaviour {
         }
         if (step > 1.0) transform.RotateAround(transform.position, axis, rotateAmount * (1.0f - lastStep));
 
+        isRotating = false;
     }//http://answers.unity3d.com/questions/29110/easing-a-rotation-of-rotate-around.html
 
     IEnumerator GravityZero() //World가 회전하는 동안
@@ -88,8 +96,25 @@ public class UserControl : MonoBehaviour {
     {
         if (Input.GetKeyDown("q"))
         {
+            rotateTime = 0.8f;
             StartCoroutine(GravityZero());
-            StartCoroutine(RotateWorld(new Vector3(0, 0, 1),180));
+            if (transform.eulerAngles.y > 45 && transform.eulerAngles.y <= 135)
+            {
+                StartCoroutine(RotateWorld(new Vector3(1, 0, 0), 180));
+            }
+            else if (transform.eulerAngles.y > 135 && transform.eulerAngles.y <= 225)
+            {
+                StartCoroutine(RotateWorld(new Vector3(0, 0, -1), 180));
+            }
+            else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 275)
+            {
+                StartCoroutine(RotateWorld(new Vector3(-1, 0, 0), 180));
+            }
+            else
+            {
+                StartCoroutine(RotateWorld(new Vector3(0, 0, 1), 180));
+            }
+            rotateTime = 0.5f;
         }
     }
     
@@ -116,6 +141,31 @@ public class UserControl : MonoBehaviour {
             }
         }
     }
+
+    void OnChangeGravityBackward()
+    {
+        if (Input.GetKeyDown("f"))
+        {
+            StartCoroutine(GravityZero());
+            if (transform.eulerAngles.y > 45 && transform.eulerAngles.y <= 135)
+            {
+                StartCoroutine(RotateWorld(new Vector3(0, 0, 1), 90));
+            }
+            else if (transform.eulerAngles.y > 135 && transform.eulerAngles.y <= 225)
+            {
+                StartCoroutine(RotateWorld(new Vector3(1, 0, 0), 90));
+            }
+            else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 275)
+            {
+                StartCoroutine(RotateWorld(new Vector3(0, 0, -1), 90));
+            }
+            else
+            {
+                StartCoroutine(RotateWorld(new Vector3(-1, 0, 0), 90));
+            }
+        }
+    }
+
 
     void OnStageReset()
     {

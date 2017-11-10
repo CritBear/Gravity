@@ -29,12 +29,14 @@ public class PlayManager : MonoBehaviour {
         m_Dead = false;
 
         UpdateUI();
+        InvokeRepeating("LeaveMapCheck", 0, 0.5f);
     }
 
-    private void Update()
+    void LeaveMapCheck()
     {
-        if(Mathf.Abs(m_Controller.velocity.y) > 80)
+        if (Mathf.Abs(m_Controller.velocity.y) > 80 && !m_Dead)
         {
+            m_Dead = true;
             m_CurrentHealth = 0;
             UpdateUI();
             m_GameManager.SendMessage("Dead", SendMessageOptions.DontRequireReceiver);
@@ -74,6 +76,7 @@ public class PlayManager : MonoBehaviour {
 
         if(m_CurrentHealth <= 0)
         {
+            m_Dead = true;
             m_GameManager.SendMessage("Dead", SendMessageOptions.DontRequireReceiver);
         }
         m_isDropping = false;

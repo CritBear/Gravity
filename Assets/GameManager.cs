@@ -23,11 +23,16 @@ public class GameManager : MonoBehaviour {
         m_StartWait = new WaitForSeconds(m_StartDelay);
         m_EndWait = new WaitForSeconds(m_EndDelay);
 
-        StartCoroutine(StageStarting());
+        if (PlayInfo.isFirstTry)
+        {
+            StartCoroutine(StageStarting());
+            PlayInfo.isFirstTry = false;
+        }
     }
 
     IEnumerator StageStarting()
     {
+        SetCamera();
         yield return m_StartWait;
 
         SetPlayer();
@@ -41,7 +46,6 @@ public class GameManager : MonoBehaviour {
 
     public void Clear()
     {
-        PlayInfo.stageNum++;
         StartCoroutine(StageEnding());
     }
 
@@ -50,11 +54,14 @@ public class GameManager : MonoBehaviour {
         m_MessageText.text = "Clear";
         yield return m_EndWait;
 
+        PlayInfo.stageNum++;
+        PlayInfo.isFirstTry = true;
         SceneManager.LoadScene("Stage" + PlayInfo.stageNum.ToString());
     }
 
     public void Dead()
     {
+        StopAllCoroutines();
         StartCoroutine(DeadEnding());
     }
     
@@ -62,9 +69,17 @@ public class GameManager : MonoBehaviour {
     {
         m_MessageText.text = "You Died";
         m_Player.GetComponent<FirstPersonController>().enabled = false;
+        m_Player.GetComponent<UserControl>().enabled = false;
         yield return m_EndWait;
        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void SetCamera()
+    {
+        m_Player.SetActive(false);
+        m_SecondCam.SetActive(true);
+        m_MessageText.text = "Stage " + PlayInfo.stageNum.ToString();
     }
 
     void SetPlayer()
