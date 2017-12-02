@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 20079428411619712}
   - component: {fileID: 81830660509347672}
   - component: {fileID: 124240165585721600}
+  - component: {fileID: 92532567775418418}
+  - component: {fileID: 114913521357258864}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -225,7 +227,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b3266b78b59e8f348a9e503484cf6e02, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5e79a042dccfa447abeaa9be18b67db1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -296,6 +298,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!92 &92532567775418418
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873974544293548}
+  m_Enabled: 1
 --- !u!114 &114085743651560008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,6 +407,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  m_walkAble: 1
 --- !u!114 &114748084025564180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -410,10 +420,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_StartingHealth: 100
-  healthImage1: {fileID: 0}
-  healthImage2: {fileID: 0}
-  healthImage3: {fileID: 0}
-  m_DamageSound: {fileID: 82195091353029714}
+  healthImage1: {fileID: 114457694294227254, guid: 7dff8356e0c81bf48b2091f7d51437d5,
+    type: 2}
+  healthImage2: {fileID: 114772452708402102, guid: 7dff8356e0c81bf48b2091f7d51437d5,
+    type: 2}
+  healthImage3: {fileID: 114901410920191682, guid: 7dff8356e0c81bf48b2091f7d51437d5,
+    type: 2}
+  m_DamageAudio: {fileID: 82195091353029714}
+  m_DamageSound1: {fileID: 8300000, guid: 5e79a042dccfa447abeaa9be18b67db1, type: 3}
+  m_DamageSound2: {fileID: 8300000, guid: 267ec7fc2e11a46fe9b7d206b6976f44, type: 3}
+  isClear: 0
 --- !u!114 &114896543311122836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -429,7 +445,25 @@ MonoBehaviour:
     type: 2}
   helpEffect_180Prefab: {fileID: 198085115155796364, guid: 0f42c913d5f832743b3e2f4c4ec208c6,
     type: 2}
-  rotateSpeed: 10
+--- !u!114 &114913521357258864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873974544293548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043b34557188f834b9bf5c1beaa1548f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SystemCamera: {fileID: 0}
+  OnScreenDisplayPrefab: {fileID: 100004, guid: d3c437231f3a4ab4a8f71565d6da1d0e,
+    type: 2}
+  OffScreenDisplayPrefab: {fileID: 100006, guid: 61fc561d9ae8f7042b0101b522770fc7,
+    type: 2}
+  Display_Minimap: 1
+  Minimap_Prefab: {fileID: 100000, guid: b3c3c1feec344e44bba541def56b88b3, type: 2}
+  Minimap_GameObject: {fileID: 0}
 --- !u!124 &124240165585721600
 Behaviour:
   m_ObjectHideFlags: 1

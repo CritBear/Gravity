@@ -9,7 +9,9 @@ public class PlayManager : MonoBehaviour {
     public Image healthImage1;
     public Image healthImage2;
     public Image healthImage3;
-    public AudioSource m_DamageSound;
+    public AudioSource m_DamageAudio;
+    public AudioClip m_DamageSound1;
+    public AudioClip m_DamageSound2;
 
     private GameObject m_GameManager;
     CharacterController m_Controller;
@@ -20,6 +22,8 @@ public class PlayManager : MonoBehaviour {
     bool m_isDropping = false;
     float m_DropVelocity;
     float m_DropDamage;
+
+    [HideInInspector] public bool isClear = false;
 
     private void Start()
     {
@@ -34,6 +38,8 @@ public class PlayManager : MonoBehaviour {
 
     void LeaveMapCheck()
     {
+        if (isClear) return;
+
         if (Mathf.Abs(m_Controller.velocity.y) > 80 && !m_Dead)
         {
             m_Dead = true;
@@ -43,16 +49,18 @@ public class PlayManager : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "GoalArea")
         {
             m_GameManager.SendMessage("Clear", SendMessageOptions.DontRequireReceiver);
         }
-    }
+    }*/
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (isClear) return;
+
         if (Mathf.Abs(m_Controller.velocity.y) > 25f && !m_isDropping)
         {
             m_DropVelocity = m_Controller.velocity.y;
@@ -66,9 +74,18 @@ public class PlayManager : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
         if(Mathf.Abs(m_DropVelocity - m_Controller.velocity.y) > 30f)
         {
-            m_DropDamage = Mathf.Pow(Mathf.Clamp(Mathf.Abs(m_DropVelocity - m_Controller.velocity.y) - 30f, 0, 100), 2);
+            m_DropDamage = Mathf.Pow(Mathf.Clamp(Mathf.Abs(m_DropVelocity - Mathf.Clamp(m_Controller.velocity.y, -100, 0)) - 30f, 0, 100), 2);
             m_CurrentHealth -= m_DropDamage;
-            m_DamageSound.Play();
+
+            if(m_DropDamage < 70)
+            {
+                m_DamageAudio.clip = m_DamageSound1;
+            }
+            else
+            {
+                m_DamageAudio.clip = m_DamageSound2;
+            }
+            m_DamageAudio.Play();
 
             StartCoroutine(HealthGeneration());
         }

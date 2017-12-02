@@ -13,11 +13,10 @@ public class UserControl : MonoBehaviour {
     Renderer helpEffect_90Rend;
     Renderer helpEffect_180Rend;
     GameObject world;
-
-    public float rotateSpeed = 1f;
-    Vector3 originGravity;
     
-    float rotateTime = 0.5f;
+    Vector3 originGravity;
+
+    float rotateTime = 0.3f;
     int isGravityZero;
     bool isRotateHelpOn = false;
     bool isRotating = false;
@@ -96,7 +95,7 @@ public class UserControl : MonoBehaviour {
     {
         if (Input.GetKeyDown("q"))
         {
-            rotateTime = 0.8f;
+            rotateTime = 0.5f;
             StartCoroutine(GravityZero());
             if (transform.eulerAngles.y > 45 && transform.eulerAngles.y <= 135)
             {
@@ -114,7 +113,7 @@ public class UserControl : MonoBehaviour {
             {
                 StartCoroutine(RotateWorld(new Vector3(0, 0, 1), 180));
             }
-            rotateTime = 0.5f;
+            rotateTime = 0.3f;
         }
     }
     

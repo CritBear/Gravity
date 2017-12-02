@@ -41,7 +41,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-        
+
+        public bool m_walkAble = true;
         // Use this for initialization
         private void Start()
         {
@@ -208,7 +209,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
             bool waswalking = m_IsWalking;
-
+            
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running

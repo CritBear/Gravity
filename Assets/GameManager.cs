@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour {
     IEnumerator StageEnding()
     {
         m_MessageText.text = "Clear";
+        m_Player.GetComponent<PlayManager>().isClear = true;
         yield return m_EndWait;
 
         PlayInfo.stageNum++;
