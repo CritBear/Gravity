@@ -6,6 +6,7 @@ public class UserControl : MonoBehaviour {
 
     public ParticleSystem helpEffect_90Prefab;
     public ParticleSystem helpEffect_180Prefab;
+    public GameObject pausePanel;
 
     private GameObject m_GameManager;
     ParticleSystem helpEffect_90;
@@ -16,9 +17,8 @@ public class UserControl : MonoBehaviour {
     
     Vector3 originGravity;
 
-    float rotateTime = 0.3f;
+    float rotateTime = 0.5f;
     int isGravityZero;
-    bool isRotateHelpOn = false;
     bool isRotating = false;
 
     private void Start()
@@ -44,12 +44,12 @@ public class UserControl : MonoBehaviour {
         }
 
         OnRotateHelp();
-        if (isRotateHelpOn)
+        if (PlayInfo.isOnHelpEff)
         {
             PlayHelpEffect();
         }
 
-        OnStageReset();
+        OnPause();
     }
 
     IEnumerator RotateWorld(Vector3 axis, float rotateAmount) //RotateAround를 Slerp형태로
@@ -95,7 +95,7 @@ public class UserControl : MonoBehaviour {
     {
         if (Input.GetKeyDown("q"))
         {
-            rotateTime = 0.5f;
+            rotateTime = 0.8f;
             StartCoroutine(GravityZero());
             if (transform.eulerAngles.y > 45 && transform.eulerAngles.y <= 135)
             {
@@ -105,7 +105,7 @@ public class UserControl : MonoBehaviour {
             {
                 StartCoroutine(RotateWorld(new Vector3(0, 0, -1), 180));
             }
-            else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 275)
+            else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 315)
             {
                 StartCoroutine(RotateWorld(new Vector3(-1, 0, 0), 180));
             }
@@ -113,7 +113,7 @@ public class UserControl : MonoBehaviour {
             {
                 StartCoroutine(RotateWorld(new Vector3(0, 0, 1), 180));
             }
-            rotateTime = 0.3f;
+            rotateTime = 0.5f;
         }
     }
     
@@ -130,7 +130,7 @@ public class UserControl : MonoBehaviour {
             {
                 StartCoroutine(RotateWorld(new Vector3(-1, 0, 0), 90));
             }
-            else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 275)
+            else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 315)
             {
                 StartCoroutine(RotateWorld(new Vector3(0, 0, 1), 90));
             }
@@ -154,7 +154,7 @@ public class UserControl : MonoBehaviour {
             {
                 StartCoroutine(RotateWorld(new Vector3(1, 0, 0), 90));
             }
-            else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 275)
+            else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 315)
             {
                 StartCoroutine(RotateWorld(new Vector3(0, 0, -1), 90));
             }
@@ -165,12 +165,20 @@ public class UserControl : MonoBehaviour {
         }
     }
 
-
-    void OnStageReset()
+    void OnPause()
     {
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            m_GameManager.SendMessage("StageReset", SendMessageOptions.DontRequireReceiver);
+            if (!pausePanel.activeSelf)
+            {
+                Time.timeScale = 0;
+                pausePanel.SetActive(true);
+            }
+            else
+            {
+                Time.timeScale = 1;
+                pausePanel.SetActive(false);
+            }
         }
     }
 
@@ -178,8 +186,8 @@ public class UserControl : MonoBehaviour {
     {
         if (Input.GetKeyDown("x"))
         {
-            isRotateHelpOn = !isRotateHelpOn;
-            if (!isRotateHelpOn)
+            PlayInfo.isOnHelpEff = !PlayInfo.isOnHelpEff;
+            if (!PlayInfo.isOnHelpEff)
             {
                 if (helpEffect_90Rend.enabled)
                 {
@@ -198,10 +206,10 @@ public class UserControl : MonoBehaviour {
         RaycastHit hit1, hit2;
         Ray ray1, ray2;
 
-        Vector3 origin = transform.position + new Vector3(0, 0.4f, 0);//z = 1.0f
+        Vector3 origin = transform.position + new Vector3(0, 0.4f, 0);
         Vector3 direction;
 
-        if (transform.eulerAngles.y > 45 && transform.eulerAngles.y <= 135)
+        if (transform.eulerAngles.y > 45  && transform.eulerAngles.y <= 135)
         {
             direction = new Vector3(1, 0, 0);
         }
@@ -209,7 +217,7 @@ public class UserControl : MonoBehaviour {
         {
             direction = new Vector3(0, 0, -1);
         }
-        else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 275)
+        else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 315)
         {
             direction = new Vector3(-1, 0, 0);
         }
@@ -223,40 +231,44 @@ public class UserControl : MonoBehaviour {
         bool result1 = Physics.Raycast(ray1, out hit1, 100f);
         bool result2 = Physics.Raycast(ray2, out hit2, 100f);
 
-        helpEffect_90.transform.position = hit1.point - direction * 0.3f;
+        //helpEffect_90.transform.position = hit1.point - direction * 0.3f;
         helpEffect_90.transform.rotation = Quaternion.LookRotation(direction);
 
-        helpEffect_180.transform.position = hit2.point - new Vector3(0, 1, 0) * 0.3f;
+        //helpEffect_180.transform.position = hit2.point - new Vector3(0, 1, 0) * 0.3f;
         helpEffect_180.transform.rotation = Quaternion.LookRotation(new Vector3(0, 1, 0));
 
         if (result1)
         {
-            if (!helpEffect_90Rend.enabled)
+            helpEffect_90.transform.position = hit1.point - direction * 0.3f;
+            /*if (!helpEffect_90Rend.enabled)
             {
                 helpEffect_90Rend.enabled = true;
-            }
+            }*/
         }
         else
         {
-            if (helpEffect_90Rend.enabled)
+            helpEffect_90.transform.position = origin + direction * 100;
+            /*if (helpEffect_90Rend.enabled)
             {
                 helpEffect_90Rend.enabled = false;
-            }
+            }*/
         }
 
         if (result2)
         {
-            if (!helpEffect_180Rend.enabled)
+            helpEffect_180.transform.position = hit2.point - new Vector3(0, 1, 0) * 0.3f;
+            /*if (!helpEffect_180Rend.enabled)
             {
                 helpEffect_180Rend.enabled = true;
-            }
+            }*/
         }
         else
         {
-            if (helpEffect_180Rend.enabled)
+            helpEffect_180.transform.position = origin + new Vector3(0, 1, 0) * 100;
+            /*if (helpEffect_180Rend.enabled)
             {
                 helpEffect_180Rend.enabled = false;
-            }
+            }*/
         }
 
     }

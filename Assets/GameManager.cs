@@ -8,7 +8,6 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class GameManager : MonoBehaviour {
 
     public GameObject m_Player;
-    public GameObject m_SecondCam;
     public Transform m_SpawnPoint;
     public Text m_MessageText;
 
@@ -17,6 +16,11 @@ public class GameManager : MonoBehaviour {
     
     private WaitForSeconds m_StartWait;
     private WaitForSeconds m_EndWait;
+
+    private void Awake()
+    {
+        Physics.gravity = new Vector3(0, -9.81f, 0);
+    }
 
     private void Start()
     {
@@ -32,19 +36,23 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator StageStarting()
     {
-        SetCamera();
-        yield return m_StartWait;
-
         SetPlayer();
+        yield return m_StartWait;
+        
         m_MessageText.text = string.Empty;
     }
 
-    public void StageReset()
+    void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void Clear()
+    void Clear()
     {
         StartCoroutine(StageEnding());
     }
@@ -60,7 +68,7 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene("Stage" + PlayInfo.stageNum.ToString());
     }
 
-    public void Dead()
+    void Dead()
     {
         StopAllCoroutines();
         StartCoroutine(DeadEnding());
@@ -76,17 +84,9 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void SetCamera()
-    {
-        m_Player.SetActive(false);
-        m_SecondCam.SetActive(true);
-        m_MessageText.text = "Stage " + PlayInfo.stageNum.ToString();
-    }
-
     void SetPlayer()
     {
-        m_SecondCam.SetActive(false);
-        m_Player.SetActive(true);
+        m_MessageText.text = "Stage " + PlayInfo.stageNum.ToString();
 
         m_Player.transform.position = m_SpawnPoint.position;
         m_Player.transform.rotation = m_SpawnPoint.rotation;

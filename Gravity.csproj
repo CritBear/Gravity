@@ -88,6 +88,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraController_Self.cs" />
+    <Compile Include="Assets\Download\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
+    <Compile Include="Assets\Download\EffectExamples\Shared\Scripts\GunAim.cs" />
+    <Compile Include="Assets\Download\EffectExamples\Shared\Scripts\GunShoot.cs" />
+    <Compile Include="Assets\Download\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
+    <Compile Include="Assets\Download\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Demos\Scripts\HUDFPS.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Demos\Scripts\MarkerFPS.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Demos\Scripts\Movement_2D_Demo.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Demos\Scripts\SpawnLocation.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Demos\Scripts\Standard Assets\MouseLook2.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Demos\Scripts\ToggleLocationMarker.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Scripts\Location.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Scripts\LocationManager.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Scripts\LocationTrackingDisplay.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Scripts\LocationTrackingSystem.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Scripts\MinimapDisplay.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Scripts\OffScreenDisplay.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Scripts\OnScreenDisplay.cs" />
+    <Compile Include="Assets\Download\HyperLuminal\LocatorSystem\Scripts\PointerArrow.cs" />
     <Compile Include="Assets\Download\SkyBoxes\RecordScreens.cs" />
     <Compile Include="Assets\Download\SkyBoxes\SkyBoxPicker.cs" />
     <Compile Include="Assets\Download\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" />
@@ -174,30 +193,21 @@
     <Compile Include="Assets\Download\UBER\Scripts\UBER_MaterialPresetCollection.cs" />
     <Compile Include="Assets\Download\UBER\Scripts\UBER_MaterialPresetCollectionReference.cs" />
     <Compile Include="Assets\Download\UBER\Scripts\UBER_MouseOrbit_DynamicDistance.cs" />
+    <Compile Include="Assets\DroneController.cs" />
     <Compile Include="Assets\GameManager.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Demos\Scripts\HUDFPS.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Demos\Scripts\MarkerFPS.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Demos\Scripts\Movement_2D_Demo.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Demos\Scripts\SpawnLocation.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Demos\Scripts\Standard Assets\MouseLook2.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Demos\Scripts\ToggleLocationMarker.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Scripts\Location.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Scripts\LocationManager.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Scripts\LocationTrackingDisplay.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Scripts\LocationTrackingSystem.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Scripts\MinimapDisplay.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Scripts\OffScreenDisplay.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Scripts\OnScreenDisplay.cs" />
-    <Compile Include="Assets\HyperLuminal\LocatorSystem\Scripts\PointerArrow.cs" />
+    <Compile Include="Assets\JustRotate.cs" />
     <Compile Include="Assets\MenuDoorController.cs" />
     <Compile Include="Assets\MenuManager.cs" />
     <Compile Include="Assets\NextStageDoor.cs" />
+    <Compile Include="Assets\PausePanelButton.cs" />
     <Compile Include="Assets\PlayerHealth.cs" />
     <Compile Include="Assets\PlayInfo.cs" />
     <Compile Include="Assets\PlayManager.cs" />
+    <Compile Include="Assets\ShotEffectsManager.cs" />
     <Compile Include="Assets\UserControl.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Download\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
     <None Include="Assets\Download\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Download\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Download\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
@@ -324,6 +334,7 @@
     <None Include="Assets\Download\UBER\_UBER_deferred_info.txt" />
     <None Include="Assets\Download\UBER\_verinfo.txt" />
     <None Include="Assets\Download\_Creepy_Cat\_3D Scifi Kit Starter Kit\_Docs\Doc.txt" />
+    <None Include="Assets\Six Style\readme.txt" />
     <None Include="Assets\Standard Assets\Effects\CinematicEffects(BETA)\Bloom\Resources\Bloom.cginc" />
     <None Include="Assets\Standard Assets\Effects\CinematicEffects(BETA)\Bloom\Resources\Bloom.shader" />
     <None Include="Assets\Standard Assets\Effects\CinematicEffects(BETA)\TonemappingColorGrading\Resources\HistogramCompute.compute" />

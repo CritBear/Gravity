@@ -150,6 +150,7 @@
     <Compile Include="Assets\Standard Assets\Effects\CinematicEffects(BETA)\TonemappingColorGrading\Editor\TonemappingColorGradingEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Download\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
     <None Include="Assets\Download\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Download\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Download\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
@@ -276,6 +277,7 @@
     <None Include="Assets\Download\UBER\_UBER_deferred_info.txt" />
     <None Include="Assets\Download\UBER\_verinfo.txt" />
     <None Include="Assets\Download\_Creepy_Cat\_3D Scifi Kit Starter Kit\_Docs\Doc.txt" />
+    <None Include="Assets\Six Style\readme.txt" />
     <None Include="Assets\Standard Assets\Effects\CinematicEffects(BETA)\Bloom\Resources\Bloom.cginc" />
     <None Include="Assets\Standard Assets\Effects\CinematicEffects(BETA)\Bloom\Resources\Bloom.shader" />
     <None Include="Assets\Standard Assets\Effects\CinematicEffects(BETA)\TonemappingColorGrading\Resources\HistogramCompute.compute" />

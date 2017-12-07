@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayManager : MonoBehaviour {
-
+    
     public float m_StartingHealth = 100f;
     public Image healthImage1;
     public Image healthImage2;
@@ -22,6 +22,8 @@ public class PlayManager : MonoBehaviour {
     bool m_isDropping = false;
     float m_DropVelocity;
     float m_DropDamage;
+
+    bool groanDelayCheck = true;
 
     [HideInInspector] public bool isClear = false;
 
@@ -48,20 +50,52 @@ public class PlayManager : MonoBehaviour {
             m_GameManager.SendMessage("Dead", SendMessageOptions.DontRequireReceiver);
         }
     }
-
-    /*private void OnTriggerEnter(Collider other)
+    
+    void Damaged(float damage)
     {
-        if (other.tag == "GoalArea")
+        if (m_Dead || isClear)
         {
-            m_GameManager.SendMessage("Clear", SendMessageOptions.DontRequireReceiver);
+            return;
         }
-    }*/
+
+        m_CurrentHealth -= damage;
+        UpdateUI();
+
+        if (groanDelayCheck)
+        {
+            if (damage < 70)
+            {
+                m_DamageAudio.clip = m_DamageSound1;
+            }
+            else
+            {
+                m_DamageAudio.clip = m_DamageSound2;
+            }
+            m_DamageAudio.Play();
+            StartCoroutine(GroanDelay());
+        }
+
+        if (m_CurrentHealth <= 0)
+        {
+            m_Dead = true;
+            m_GameManager.SendMessage("Dead", SendMessageOptions.DontRequireReceiver);
+        }
+
+        StartCoroutine(HealthGeneration());
+    }
+
+    IEnumerator GroanDelay()
+    {
+        groanDelayCheck = false;
+        yield return new WaitForSeconds(1f);
+        groanDelayCheck = true;
+    }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (isClear) return;
 
-        if (Mathf.Abs(m_Controller.velocity.y) > 25f && !m_isDropping)
+        if (Mathf.Abs(m_Controller.velocity.y) > 20f && !m_isDropping)
         {
             m_DropVelocity = m_Controller.velocity.y;
             StartCoroutine(DropCheck());
@@ -72,30 +106,12 @@ public class PlayManager : MonoBehaviour {
     {
         m_isDropping = true;
         yield return new WaitForSeconds(0.1f);
-        if(Mathf.Abs(m_DropVelocity - m_Controller.velocity.y) > 30f)
+        if(Mathf.Abs(m_DropVelocity - m_Controller.velocity.y) > 20f)
         {
-            m_DropDamage = Mathf.Pow(Mathf.Clamp(Mathf.Abs(m_DropVelocity - Mathf.Clamp(m_Controller.velocity.y, -100, 0)) - 30f, 0, 100), 2);
-            m_CurrentHealth -= m_DropDamage;
+            m_DropDamage = Mathf.Pow(Mathf.Clamp(Mathf.Abs(m_DropVelocity - Mathf.Clamp(m_Controller.velocity.y, -100, 0)) - 20f, 0, 100), 2f);
 
-            if(m_DropDamage < 70)
-            {
-                m_DamageAudio.clip = m_DamageSound1;
-            }
-            else
-            {
-                m_DamageAudio.clip = m_DamageSound2;
-            }
-            m_DamageAudio.Play();
-
-            StartCoroutine(HealthGeneration());
-        }
-        UpdateUI();
-
-        if(m_CurrentHealth <= 0)
-        {
-            m_Dead = true;
-            m_GameManager.SendMessage("Dead", SendMessageOptions.DontRequireReceiver);
-        }
+            Damaged(m_DropDamage);
+        }   
         m_isDropping = false;
     }
 

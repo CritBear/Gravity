@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MenuDoorController : MonoBehaviour {
 
+    public int stageNum;
+
     GameObject m_MenuManager;
 
     private void Start()
@@ -15,7 +17,7 @@ public class MenuDoorController : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            m_MenuManager.SendMessage("Play", SendMessageOptions.DontRequireReceiver);
+            m_MenuManager.SendMessage("Play", stageNum, SendMessageOptions.DontRequireReceiver);
         }
     }
 }

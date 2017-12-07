@@ -278,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1754198701471676}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 18, y: 0.01, z: 86.3}
+  m_LocalPosition: {x: -2, y: 13, z: 139}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4131837418056500}
@@ -293,7 +293,7 @@ Transform:
   - {fileID: 4286439498199928}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 180, z: 0}
 --- !u!4 &4286439498199928
 Transform:
   m_ObjectHideFlags: 1
@@ -684,11 +684,11 @@ MonoBehaviour:
   Display_1_Timer: 0
   Display_1_Text: Goal
   Text_1_Colour: {r: 0, g: 0, b: 0, a: 1}
-  Display_2_Type: 0
+  Display_2_Type: 1
   Distance_2_Units: 
   Display_2_Timer: 0
-  Display_2_Text: 
-  Text_2_Colour: {r: 0, g: 0, b: 0, a: 1}
+  Display_2_Text: Goal
+  Text_2_Colour: {r: 1, g: 1, b: 1, a: 1}
   PointerArrowIcon: {fileID: 0}
   PointerColour: {r: 0, g: 0, b: 0, a: 1}
   DisplayStyle: 0

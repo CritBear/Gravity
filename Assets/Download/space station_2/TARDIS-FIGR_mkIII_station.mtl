@@ -1,0 +1,215 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 08.01.2016 00:03:12
+
+newmtl Face
+	Ns 40.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1000 0.1000 0.1000
+	Kd 0.7000 0.7000 0.7000
+	Ks 0.2700 0.2700 0.2700
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\New Folder\window_col.jpg
+	map_Kd C:\Documents and Settings\glenn\Desktop\New Folder\window_col.jpg
+
+newmtl Rim
+	Ns 40.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1000 0.1000 0.1000
+	Kd 0.7000 0.7000 0.7000
+	Ks 0.2700 0.2700 0.2700
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\New Folder\std.jpg
+	map_Kd C:\Documents and Settings\glenn\Desktop\New Folder\std.jpg
+
+newmtl wheel_girders
+	Ns 66.0000
+	Ni 1.0000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.7804 0.6902 0.6824
+	Kd 0.7804 0.6902 0.6824
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\neue\rust.JPG
+	map_Kd C:\Documents and Settings\glenn\Desktop\neue\rust.JPG
+	map_refl Map__9_Raytrace.tga
+
+newmtl spokes
+	Ns 13.0842
+	Ni 1.0000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0347 0.2196 0.2132
+	Kd 0.1059 0.6706 0.6510
+	Ks 0.0099 0.0630 0.0612
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\neue\spoke.jpg
+	map_Kd C:\Documents and Settings\glenn\Desktop\neue\spoke.jpg
+
+newmtl spoke_support
+	Ns 52.9010
+	Ni 1.0000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.4863 0.4118 0.4118
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl spindle
+	Ns 13.0842
+	Ni 1.0000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0636 0.1570 0.1804
+	Kd 0.1922 0.4745 0.5451
+	Ks 0.0018 0.0044 0.0050
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\New Folder\spoke_Diff.jpg
+	map_Kd C:\Documents and Settings\glenn\Desktop\New Folder\spoke_Diff.jpg
+	map_bump C:\Documents and Settings\glenn\Desktop\New Folder\spokeBump.gif
+	bump C:\Documents and Settings\glenn\Desktop\New Folder\spokeBump.gif
+
+newmtl Bay_Top
+	Ns 40.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1000 0.1000 0.1000
+	Kd 0.7000 0.7000 0.7000
+	Ks 0.2700 0.2700 0.2700
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\neue\btpanel.jpg
+	map_Kd C:\Documents and Settings\glenn\Desktop\neue\btpanel.jpg
+	map_Ke C:\Documents and Settings\glenn\Desktop\neue\btLite.gif
+	map_bump C:\Documents and Settings\glenn\Desktop\neue\btBump.gif
+	bump C:\Documents and Settings\glenn\Desktop\neue\btBump.gif
+
+newmtl Bay_Side
+	Ns 40.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1000 0.1000 0.1000
+	Kd 0.7000 0.7000 0.7000
+	Ks 0.2700 0.2700 0.2700
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\neue\bs.jpg
+	map_Kd C:\Documents and Settings\glenn\Desktop\neue\bs.jpg
+	map_Ke C:\Documents and Settings\glenn\Desktop\neue\bsLight.gif
+	map_bump C:\Documents and Settings\glenn\Desktop\neue\bsBump.gif
+	bump C:\Documents and Settings\glenn\Desktop\neue\bsBump.gif
+
+newmtl hubface
+	Ns 13.0842
+	Ni 1.0000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1765 0.0644 0.0644
+	Kd 0.5373 0.1961 0.1961
+	Ks 0.0050 0.0018 0.0018
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\neue\hubDiffuse.jpg
+	map_Kd C:\Documents and Settings\glenn\Desktop\neue\hubDiffuse.jpg
+	map_bump C:\Documents and Settings\glenn\Desktop\neue\hubB.gif
+	bump C:\Documents and Settings\glenn\Desktop\neue\hubB.gif
+
+newmtl cables
+	Ns 52.9010
+	Ni 1.0000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5490 0.5647 0.5686
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl cable_brackets
+	Ns 52.9010
+	Ni 1.0000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5686 0.5843 0.5137
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl block
+	Ns 13.0842
+	Ni 1.0000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1804 0.0636 0.1713
+	Kd 0.5451 0.1922 0.5176
+	Ks 0.0650 0.0229 0.0617
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\neue\std.jpg
+	map_Kd C:\Documents and Settings\glenn\Desktop\neue\std.jpg
+
+newmtl Material__28
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.1294 0.1765 0.0641
+	Kd 0.3882 0.5294 0.1922
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.7451 0.7451 0.7451
+
+newmtl Material__30
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\signage.jpg
+	map_Kd C:\Documents and Settings\glenn\Desktop\signage.jpg
+
+newmtl Material__302
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Documents and Settings\glenn\Desktop\New Folder\pc-bw.png
+	map_Kd C:\Documents and Settings\glenn\Desktop\New Folder\pc-bw.png
