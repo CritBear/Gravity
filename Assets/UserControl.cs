@@ -27,6 +27,8 @@ public class UserControl : MonoBehaviour {
         world = GameObject.Find("World");
         helpEffect_90 = Instantiate(helpEffect_90Prefab);
         helpEffect_180 = Instantiate(helpEffect_180Prefab);
+        helpEffect_180.transform.rotation = Quaternion.LookRotation(new Vector3(0, 1, 0));
+
         helpEffect_90Rend = helpEffect_90.GetComponent<Renderer>();
         helpEffect_180Rend = helpEffect_180.GetComponent<Renderer>();
 
@@ -189,14 +191,13 @@ public class UserControl : MonoBehaviour {
             PlayInfo.isOnHelpEff = !PlayInfo.isOnHelpEff;
             if (!PlayInfo.isOnHelpEff)
             {
-                if (helpEffect_90Rend.enabled)
-                {
-                    helpEffect_90Rend.enabled = false;
-                }
-                if (helpEffect_180Rend.enabled)
-                {
-                    helpEffect_180Rend.enabled = false;
-                }
+                helpEffect_90Rend.enabled = false;
+                helpEffect_180Rend.enabled = false;
+            }
+            else
+            {
+                helpEffect_90Rend.enabled = true;
+                helpEffect_180Rend.enabled = true;
             }
         }
     }
@@ -212,63 +213,47 @@ public class UserControl : MonoBehaviour {
         if (transform.eulerAngles.y > 45  && transform.eulerAngles.y <= 135)
         {
             direction = new Vector3(1, 0, 0);
+            helpEffect_180.transform.rotation = Quaternion.Euler(new Vector3(helpEffect_180.transform.eulerAngles.x, 90, helpEffect_180.transform.eulerAngles.z));
         }
         else if (transform.eulerAngles.y > 135 && transform.eulerAngles.y <= 225)
         {
             direction = new Vector3(0, 0, -1);
+            helpEffect_180.transform.rotation = Quaternion.Euler(new Vector3(helpEffect_180.transform.eulerAngles.x, 180, helpEffect_180.transform.eulerAngles.z));
         }
         else if (transform.eulerAngles.y > 225 && transform.eulerAngles.y <= 315)
         {
             direction = new Vector3(-1, 0, 0);
+            helpEffect_180.transform.rotation = Quaternion.Euler(new Vector3(helpEffect_180.transform.eulerAngles.x, 270, helpEffect_180.transform.eulerAngles.z));
         }
         else
         {
             direction = new Vector3(0, 0, 1);
+            helpEffect_180.transform.rotation = Quaternion.Euler(new Vector3(helpEffect_180.transform.eulerAngles.x, 360, helpEffect_180.transform.eulerAngles.z));
         }
 
         ray1 = new Ray(origin, direction);
         ray2 = new Ray(origin, new Vector3(0, 1, 0));
-        bool result1 = Physics.Raycast(ray1, out hit1, 100f);
-        bool result2 = Physics.Raycast(ray2, out hit2, 100f);
-
-        //helpEffect_90.transform.position = hit1.point - direction * 0.3f;
+        bool result1 = Physics.Raycast(ray1, out hit1, 70f);
+        bool result2 = Physics.Raycast(ray2, out hit2, 70f);
+        
         helpEffect_90.transform.rotation = Quaternion.LookRotation(direction);
-
-        //helpEffect_180.transform.position = hit2.point - new Vector3(0, 1, 0) * 0.3f;
-        helpEffect_180.transform.rotation = Quaternion.LookRotation(new Vector3(0, 1, 0));
-
+        
         if (result1)
         {
             helpEffect_90.transform.position = hit1.point - direction * 0.3f;
-            /*if (!helpEffect_90Rend.enabled)
-            {
-                helpEffect_90Rend.enabled = true;
-            }*/
         }
         else
         {
-            helpEffect_90.transform.position = origin + direction * 100;
-            /*if (helpEffect_90Rend.enabled)
-            {
-                helpEffect_90Rend.enabled = false;
-            }*/
+            helpEffect_90.transform.position = origin + direction * 70;
         }
 
         if (result2)
         {
             helpEffect_180.transform.position = hit2.point - new Vector3(0, 1, 0) * 0.3f;
-            /*if (!helpEffect_180Rend.enabled)
-            {
-                helpEffect_180Rend.enabled = true;
-            }*/
         }
         else
         {
-            helpEffect_180.transform.position = origin + new Vector3(0, 1, 0) * 100;
-            /*if (helpEffect_180Rend.enabled)
-            {
-                helpEffect_180Rend.enabled = false;
-            }*/
+            helpEffect_180.transform.position = origin + new Vector3(0, 1, 0) * 70;
         }
 
     }
